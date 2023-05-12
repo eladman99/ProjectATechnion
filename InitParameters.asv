@@ -1,0 +1,13 @@
+function [params] = InitParameters(graph)
+    params.num_of_lotteries = 200;
+    params.num_of_nodes = size(graph,1);
+    params.p = 0.5*ones(num_of_lotteries,number_of_nodes);
+    params.sequence = 3;
+    gamma_seq = 0;
+    solutions = zeros(num_of_lotteries,size(graph,2));
+    curr_prices = zeros(num_of_lotteries,1);
+    gamma_current = 0;
+    u = 0.05;
+    max_iteration = 10000;
+
+end
