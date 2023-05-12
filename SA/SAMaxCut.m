@@ -5,7 +5,7 @@ clc;
 
 %% Creating a graph
 max_edge_value = 10;
-num_of_nodes = 20;
+num_of_nodes = 30;
 [graph,group_size] = SimulateGraph(num_of_nodes,max_edge_value);
 
 %% initial parameters
@@ -35,6 +35,7 @@ while temprature > params.final_temprature
 
     temprature = temprature*params.pace; 
 end
+
 
 %% figures
 Displaying(params,saved_solutions,best_cut);
