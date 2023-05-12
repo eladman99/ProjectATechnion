@@ -9,7 +9,7 @@ number_of_nodes = 30;
 [graph,group_size] = SimulateGraph(number_of_nodes,max_edge_value);
 
 %% initial parameters
-params = InitParameters(graph);
+params = InitParametersCE(graph);
 
 %% Finding max-cut
 solutions = zeros(params.num_of_lotteries,size(graph,2));
@@ -29,7 +29,7 @@ while iteration < params.max_iteration
     p = repmat(p_mean,params.num_of_lotteries,1);
     
     saved_solutions = [saved_solutions ; p_mean];
-    
+
     [price_rep_num,curr_price,stop] = StopingCriteria(params,curr_price,sorted_prices,price_rep_num);
     if(stop)
         break;
