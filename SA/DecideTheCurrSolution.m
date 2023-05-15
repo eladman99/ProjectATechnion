@@ -4,9 +4,9 @@ function [next_guess_solution,best_price,best_cut] = DecideTheCurrSolution(param
 
     delta_price = (price_next - price_current)*params.norm;
 
-    if delta_price > 0 || rand() < exp(-delta_price/temprature)
+    if delta_price > 0 %|| rand() < exp(-delta_price/temprature)
        current_solution = next_guess_solution; 
-       price_current = calc_price(current_solution,graph)
+       price_current = calc_price(current_solution,graph);
     end
     
     if price_current > best_price

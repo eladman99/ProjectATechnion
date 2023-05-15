@@ -5,7 +5,7 @@ clc;
 
 %% Creating a graph
 max_edge_value = 10;
-num_of_nodes = 30;
+num_of_nodes = 8;
 [graph,group_size] = SimulateGraph(num_of_nodes,max_edge_value);
 
 %% initial parameters
