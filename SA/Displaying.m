@@ -8,6 +8,7 @@ function [] = Displaying(params,saved_solutions,saved_prices,probabilty_to_take,
     figure(2);
     [X, Y] = meshgrid( 1:params.num_of_nodes, 1:size(saved_solutions,1));
     mesh(X,Y,saved_solutions);
+    view(0,90);
     title('Best solution as function of iteration');
     xlabel('Node number');
     ylabel('Iteration number');
@@ -23,6 +24,7 @@ function [] = Displaying(params,saved_solutions,saved_prices,probabilty_to_take,
     figure(3);
     subplot(3,1,2);
     x = 1:length(probabilty_to_take);
+    probabilty_to_take(probabilty_to_take==1) = nan;
     plot(x,probabilty_to_take);
     title('Probabilty to take a "bad" step as function of iteration');
     xlabel('Iteration');

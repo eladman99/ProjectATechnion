@@ -5,7 +5,7 @@ clc;
 
 %% Creating a graph
 max_edge_value = 10;
-num_of_nodes = 20;
+num_of_nodes = 30;
 [graph,group_size] = SimulateGraph(num_of_nodes,max_edge_value);
 
 %% initial parameters
@@ -26,7 +26,6 @@ probabilty_to_take = [];
 saved_prices = [];
 saved_solutions = [];
 temprature = params.initial_temprature;
-iteration = 1;
 
 while temprature > params.final_temprature
     saved_solutions = [saved_solutions ; current_solution];
@@ -38,12 +37,10 @@ while temprature > params.final_temprature
     next_guess_solution = current_solution;
     next_guess_solution(rand_node_to_change) = not(next_guess_solution(rand_node_to_change)); 
     
-    [next_guess_solution,best_price,best_cut,curr_probabilty] = DecideTheCurrSolution(params,temprature,current_solution,next_guess_solution,best_price,best_cut,graph);
+    [current_solution,best_price,best_cut,curr_probabilty] = DecideTheCurrSolution(params,temprature,current_solution,next_guess_solution,best_price,best_cut,graph);
     probabilty_to_take = [probabilty_to_take  curr_probabilty];
     
-    iteration = iteration +1;
-    %temprature = temprature*params.pace;
-    temprature = temprature/log2(iteration+2);
+    temprature = temprature*params.pace;
 end
 
 
