@@ -4,6 +4,6 @@ function [params] = InitParametersCE(graph)
     params.seq_stop_number = 20;
     params.perc_best_solutions = 0.01;
     params.max_iteration = 10000;
-    params.perc_of_advance = 0.7;
+    params.perc_of_advance = 0.8;
 
 end
