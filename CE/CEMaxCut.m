@@ -8,6 +8,11 @@ max_edge_value = 10;
 number_of_nodes = 30;
 [graph,group_size] = SimulateGraph(number_of_nodes,max_edge_value);
 
+%% calc the max price
+blokc_mat=graph(group_size+1:number_of_nodes,1:group_size);
+max_price=sum(blokc_mat(:));
+
+
 %% initial parameters
 params = InitParametersCE(graph);
 
@@ -45,5 +50,5 @@ end
     
 
 %% Figures
-Displaying(params,saved_solutions,saved_prices,p);
+Displaying(params,saved_solutions,saved_prices,p,max_price);
 
