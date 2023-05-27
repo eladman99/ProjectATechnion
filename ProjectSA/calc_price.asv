@@ -1,0 +1,10 @@
+function [price] = calc_prices(groups,E)
+     
+    for i=1:params.team_size
+       V1 = find(groups(1,:) == i);
+       V2 = find(groups(1,:) == i);
+       price = sum(sum(E(V1,V2)))/2;
+    end
+end
+
+
