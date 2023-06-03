@@ -35,8 +35,9 @@ while temprature > params.final_temprature
     if(valid)
         [current_solution,best_price,best_solution,curr_probabilty] = DecideTheCurrSolution(params,temprature,current_solution,next_guess_solution,best_price,best_solution,Team.graph);
         saved_probabilty_to_take = [saved_probabilty_to_take  curr_probabilty];
+        temprature = temprature*params.pace;
     end
-    temprature = temprature*params.pace;
+
 end
 
 %% figures

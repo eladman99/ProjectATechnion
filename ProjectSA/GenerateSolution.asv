@@ -34,23 +34,21 @@ function [valid,next_solution] = GenerateSolution(params,Team,current_solution)
         selected_team_indexes = find(current_solution == rand_new_team_for_person);
         % checking the first change
        old_team_indexes = find(current_solution == current_solution(rand_person_to_change(1)));
-       if  current_solution(rand_person_to_change(1)) ~= current_solution(rand_person_to_change(2))
-           if sum(Team.gender(old_team_indexes) == 'M') == 4 
-              valid = false;
-              return;
-            end
-            % checking the second change
-           old_team_indexes = find(current_solution == current_solution(rand_person_to_change(2)));
-            if sum(Team.gender(old_team_indexes) == 'M') == 4 
-              valid = false;
-              return;
-            end
-            %checking if trying to put them in their old team
-            if current_solution(rand_person_to_change(1)) == rand_new_team_for_person || current_solution(rand_person_to_change(2)) == rand_new_team_for_person
-                valid = false;
-                return;
-            end
-       end
+        if sum(Team.gender(old_team_indexes) == 'M') == 4 
+          valid = false;
+          return;
+        end
+        % checking the second change
+       old_team_indexes = find(current_solution == current_solution(rand_person_to_change(2)));
+        if sum(Team.gender(old_team_indexes) == 'M') == 4 
+          valid = false;
+          return;
+        end
+        %checking if trying to put them in their old team
+        if current_solution(rand_person_to_change(1)) == rand_new_team_for_person || current_solution(rand_person_to_change(2)) == rand_new_team_for_person
+            valid = false;
+            return;
+        end
         % checking number of male and female of the moving team
         num_of_male = sum(Team.gender(selected_team_indexes) == 'M');
         num_of_female= sum(Team.gender(selected_team_indexes) == 'F');
