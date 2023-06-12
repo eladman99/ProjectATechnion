@@ -2,7 +2,7 @@ function [valid,next_solution] = GenerateSolution(params,Team,current_solution)
     next_solution = current_solution;
     if rand(1,1) > params.probability_to_double_change
         rand_person_to_change = randi(params.team_size);
-        if rand(1,1) > params.probability_to_rand_group
+        if rand(1,1) > params.probability_to_rand_group % probabilty to maybe create new team
             rand_new_team_for_person = current_solution(randi([1 params.team_size],1));
         else 
             rand_new_team_for_person = randi([1 params.team_size]);
@@ -30,7 +30,11 @@ function [valid,next_solution] = GenerateSolution(params,Team,current_solution)
     else
         rand_permutation = randperm(params.team_size);
         rand_person_to_change = rand_permutation(1:2);
-        rand_new_team_for_person = current_solution(randi([1 params.team_size],1));
+        if rand(1,1) > params.probability_to_rand_group % probabilty to maybe create new team
+            rand_new_team_for_person = current_solution(randi([1 params.team_size],1));
+        else 
+            rand_new_team_for_person = randi([1 params.team_size]);
+        end
         selected_team_indexes = find(current_solution == rand_new_team_for_person);
         % checking the first change
        old_team_indexes = find(current_solution == current_solution(rand_person_to_change(1)));
