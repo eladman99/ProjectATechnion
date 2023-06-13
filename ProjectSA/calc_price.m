@@ -1,4 +1,4 @@
-function [price] = calc_prices(params,groups,graph)
+function [price] = calc_price(params,groups,graph)
     price = 0;
     for i=1:params.team_size
        V1 = find(groups(1,:) == i);
