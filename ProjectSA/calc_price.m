@@ -8,7 +8,7 @@ function [price] = calc_price(params,groups,graph)
        % for bigger team, we normalize it.
        switch size(V1,2)
            case 3 
-             price = price + sum(sum(graph(V1,V2)))/4;
+             price = price + sum(sum(graph(V1,V2)))/2.5;
            case 4
              price = price + sum(sum(graph(V1,V2)))/3;
            otherwise
