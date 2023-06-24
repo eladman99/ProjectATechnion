@@ -1,4 +1,4 @@
-function [price_rep_num,curr_price,stop] = StopingCriteriaC(params,curr_price,next_prices,price_rep_num)
+function [price_rep_num,curr_price,stop] = StopingCriteriaCE(params,curr_price,next_prices,price_rep_num)
     if(curr_price == next_prices(1))
         price_rep_num = price_rep_num + 1;
     else
