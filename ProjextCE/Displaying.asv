@@ -22,13 +22,13 @@ function [] = Displaying(params,saved_mean_prices,saved_probabilites)
 
     figure(4);
     [X, Y] = meshgrid( 1:size(saved_probabilites,3), 1:params.team_size);
-    for i=1:size(saved_probabilites,1)
-        subplot(ceil(size(saved_probabilites,1)/2),2,i);
+    for i=1:size(saved_probabilites,3)
+        subplot(size(saved_probabilites,3),,size(saved_probabilites,3))
         mesh(X,Y,squeeze(saved_probabilites(i,:,:)));
-        view(0,90);
-        title(['Probability to be with other athlete as function of iteration - person ' num2str(i)]);
-        xlabel('Person number');
-        ylabel('Iteration number');
     end
+    view(0,90);
+    title('Probability to be with other athlete as function of iteration');
+    xlabel('Node number');
+    ylabel('Iteration number');
 
 end

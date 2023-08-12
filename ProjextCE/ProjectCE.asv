@@ -21,16 +21,17 @@ curr_price = 0;
 price_rep_num = 0;
 saved_solutions = [];
 saved_mean_prices = [];
+saved_probabilites = [];
 
 while iteration < params.max_iteration 
     [best_solutions sorted_prices]= GenerateBestSolutions(params,Team,probabilites);
     
     % Calculating the average prices
-    saved_mean_prices = [saved_mean_prices mean(sorted_prices)];
+    saved_mean_prices = [saved_mean_prices mean(sorted_prices(1:round(params.perc_best_solutions*params.num_of_lotteries)))];
 
     % Calculating the next p
     probabilites = CalculateNextProbabilty(params,Team,best_solutions,probabilites);
-
+    saved_probabilites = cat(3,saved_probabilites,probabilites);
 
     [price_rep_num,curr_price,stop] = StopingCriteriaCE(params,curr_price,sorted_prices,price_rep_num);
     if(stop)
@@ -41,5 +42,5 @@ end
     
 
 %% Figures
-Displaying(params,saved_mean_prices);
+Displaying(params,saved_mean_prices,saved_probabilites);
 
