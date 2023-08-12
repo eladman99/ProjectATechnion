@@ -16,6 +16,8 @@ function [valid] = GroupValidation(Team,groups,group_index,selected_member)
         valid = true;
     elseif num_of_male == 4 && num_of_female == 0
         valid = true;
+    elseif num_of_male == 3 && num_of_female == 0 
+        valid = true; 
     elseif num_of_male == 0 && num_of_female == 2
         valid = true;
     elseif num_of_male == 0 && num_of_female == 3

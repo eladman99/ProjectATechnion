@@ -11,7 +11,7 @@ function [prices] = calc_pricesCE(params,groups,graph)
                case 3 
                  prices(i) = prices(i) + sum(sum(graph(V1,V2)))/2.5;
                case 4
-                 prices(i) = prices(i) + sum(sum(graph(V1,V2)))/3;
+                 prices(i) = prices(i) + sum(sum(graph(V1,V2)))/2.5;
                otherwise
                  prices(i) = prices(i) + sum(sum(graph(V1,V2)))/2;
            end
