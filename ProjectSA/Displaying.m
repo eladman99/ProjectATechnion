@@ -38,4 +38,30 @@ function [] = Displaying(params,saved_solutions,saved_prices,probabilty_to_take,
     xlabel('Iteration');
     ylabel('Temprature');
 
+    %grpah as funciton of time
+    for k=size(saved_solutions,1):size(saved_solutions,1)
+        one_solution = saved_solutions(k,:);
+        numNodes = length(one_solution);
+adjacencyMatrix = zeros(numNodes);
+
+% Populate the adjacency matrix based on your vector
+for i = 1:numel(one_solution)-1
+    for j = i+1:numel(one_solution)
+        if one_solution(i) == one_solution(j)
+            adjacencyMatrix(i, j) = 1;
+            adjacencyMatrix(j, i) = 1;
+        end
+    end
+end
+
+% Create a graph object from the adjacency matrix
+G = graph(adjacencyMatrix);
+
+% Plot the graph
+figure(4);
+plot(G, 'NodeLabel', 1:numNodes);
+title('Graph with Edges between Nodes with the Same Value');
+
+    end
+
 end
