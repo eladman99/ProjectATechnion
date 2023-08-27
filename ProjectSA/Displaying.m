@@ -1,4 +1,4 @@
-function [] = Displaying(params,saved_solutions,saved_prices,probabilty_to_take,temprature,best_cut)
+function [] = Displaying(params,saved_solutions,saved_prices,probabilty_to_take,temprature,best_cut,Team)
     x= 1:params.team_size;    
     figure(1);
     stem(x,best_cut(1,:));
@@ -37,27 +37,38 @@ function [] = Displaying(params,saved_solutions,saved_prices,probabilty_to_take,
     title('Temprature as function of iteration');
     xlabel('Iteration');
     ylabel('Temprature');
-
-    %grpah as funciton of time
-    for k=size(saved_solutions,1):size(saved_solutions,1)
-        one_solution = saved_solutions(k,:);
-        numNodes = length(one_solution);
-        adjacencyMatrix = zeros(numNodes);
-        % Populate the adjacency matrix based on your vector
-        for i = 1:numel(one_solution)-1
-            for j = i+1:numel(one_solution)
-                if one_solution(i) == one_solution(j)
-                    adjacencyMatrix(i, j) = 1;
-                    adjacencyMatrix(j, i) = 1;
-                end
+ 
+    % Final graph
+    numNodes = length(best_cut);
+    adjacencyMatrix = zeros(numNodes);
+    % Populate the adjacency matrix based on your vector
+    for i = 1:numel(best_cut)-1
+        for j = i+1:numel(best_cut)
+            if best_cut(i) == best_cut(j)
+                adjacencyMatrix(i, j) = 1;
+                adjacencyMatrix(j, i) = 1;
             end
         end
-        % Create a graph object from the adjacency matrix
-        G = graph(adjacencyMatrix);
-        % Plot the graph
-        figure(4);
-        plot(G, 'NodeLabel', 1:numNodes);
-        title('Graph with Edges between Nodes with the Same Value');
     end
+    % Create a graph object from the adjacency matrix
+    G = graph(adjacencyMatrix);
+    for i=1:size(G.Edges,1)
+        G.Edges.Weight(i) = Team.graph(G.Edges.EndNodes(i,1),G.Edges.EndNodes(i,2));
+    end
+    node_colors = zeros(numNodes,3);
+    for i=1:numNodes
+        if Team.gender(i) == 'M'
+            node_colors(i,:) = [0 0 1];
+        else
+            node_colors(i,:) = [1 0 0];
+        end
+    end
+    % Plot the graph
+    figure(4);
+    plot(G, 'NodeLabel', 1:numNodes,'NodeColor', node_colors,'EdgeLabel',G.Edges.Weight);
+    title('Final result graph');
+    legendText = {sprintf('\\color{blue}Men'), sprintf('\\color{red}Women')};
+    annotation('textbox', [0.8, 0.75, 0.1, 0.1], 'String', legendText, 'FitBoxToText', 'on', 'EdgeColor', 'none');
 
 end
+

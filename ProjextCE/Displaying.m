@@ -1,4 +1,4 @@
-function [] = Displaying(params,saved_mean_prices,saved_probabilites)
+function [] = Displaying(params,saved_mean_prices,saved_probabilites,Team,best_solution)
 %     x= 1:params.team_size;    
 %     figure(1);
 %     stem(x,best_cut(1,:));
@@ -30,5 +30,39 @@ function [] = Displaying(params,saved_mean_prices,saved_probabilites)
         xlabel('Person number');
         ylabel('Iteration number');
     end
+
+
+    % Final graph
+    numNodes = length(best_solution);
+    adjacencyMatrix = zeros(numNodes);
+    % Populate the adjacency matrix based on your vector
+    for i = 1:numel(best_solution)-1
+        for j = i+1:numel(best_solution)
+            if best_solution(i) == best_solution(j)
+                adjacencyMatrix(i, j) = 1;
+                adjacencyMatrix(j, i) = 1;
+            end
+        end
+    end
+    % Create a graph object from the adjacency matrix
+    G = graph(adjacencyMatrix);
+    for i=1:size(G.Edges,1)
+        G.Edges.Weight(i) = Team.graph(G.Edges.EndNodes(i,1),G.Edges.EndNodes(i,2));
+    end
+    node_colors = zeros(numNodes,3);
+    for i=1:numNodes
+        if Team.gender(i) == 'M'
+            node_colors(i,:) = [0 0 1];
+        else
+            node_colors(i,:) = [1 0 0];
+        end
+    end
+    % Plot the graph
+    figure(5);
+    plot(G, 'NodeLabel', 1:numNodes,'NodeColor', node_colors,'EdgeLabel',G.Edges.Weight);
+    title('Final result graph');
+    legendText = {sprintf('\\color{blue}Men'), sprintf('\\color{red}Women')};
+    annotation('textbox', [0.8, 0.75, 0.1, 0.1], 'String', legendText, 'FitBoxToText', 'on', 'EdgeColor', 'none');
+
 
 end

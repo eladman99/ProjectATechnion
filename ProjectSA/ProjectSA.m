@@ -41,7 +41,7 @@ while temprature > params.final_temprature
 end
 
 %% figures
-Displaying(params,saved_solutions,saved_prices,saved_probabilty_to_take,saved_temprature,best_solution);
+Displaying(params,saved_solutions,saved_prices,saved_probabilty_to_take,saved_temprature,best_solution,Team);
 
 
 
