@@ -46,7 +46,6 @@ while iteration < params.max_iteration
     % Saving best valid solution
     if SavingValidSolution(Team,best_solution) && best_valid_price < best_price
         best_valid_solution = best_solution;
-        best_valid_price = best_price;
     end
 
     [price_rep_num,curr_price,stop] = StopingCriteriaCE(params,curr_price,sorted_prices,price_rep_num);
@@ -57,5 +56,5 @@ while iteration < params.max_iteration
 end
 
 %% Figures
-Displaying(params,saved_mean_prices,saved_probabilites,Team,best_solution,best_valid_solution);
+Displaying(params,saved_mean_prices,saved_probabilites,Team,best_solution);
 

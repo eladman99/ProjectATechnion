@@ -1,5 +1,5 @@
 function [params] = InitParametersSA(graph)
-    params.initial_temprature = 1e6;
+    params.initial_temprature = 1e4;
     params.final_temprature = 1;
     params.pace = 0.995;
     params.norm = 3e0;

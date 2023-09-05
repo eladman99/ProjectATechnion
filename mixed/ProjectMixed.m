@@ -4,7 +4,7 @@ clear all;
 clc;
 
 %% Creating team CE
-Team = SimulateTeamCE();
+Team = SimulateTeamMix();
 
 %% initial parameters CE
 params = InitParametersCE(Team.graph);

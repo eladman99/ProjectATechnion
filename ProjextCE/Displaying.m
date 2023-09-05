@@ -1,4 +1,4 @@
-function [] = Displaying(params,saved_mean_prices,saved_probabilites,Team,best_solution)
+function [] = Displaying(params,saved_mean_prices,saved_probabilites,Team,best_solution,best_valid_solution)
 %     x= 1:params.team_size;    
 %     figure(1);
 %     stem(x,best_cut(1,:));

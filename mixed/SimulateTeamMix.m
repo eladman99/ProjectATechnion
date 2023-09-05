@@ -1,4 +1,4 @@
-function [Team] = SimulateTeamCE()
+function [Team] = SimulateTeamMix()
     Team.graph = [0 10 0 3 0 0 0 -inf 0 0 -inf 0 0 0;
                   10 0 10 10 0 0 0 0 0 0 0 0 0 0;
                   0 10 0 10 0 0 0 0 0 0 0 0 0 0;
