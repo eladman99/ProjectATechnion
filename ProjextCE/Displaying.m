@@ -16,9 +16,9 @@ function [] = Displaying(params,saved_mean_prices,saved_probabilites,Team,best_s
     figure(3);
     x = 1:length(saved_mean_prices);
     plot(x,saved_mean_prices);
-    title('Price as function of iteration');
-    xlabel('Iteration number');
-    ylabel('Price');
+    title('Mean price as function of generation','FontSize',14);
+    xlabel('Generation number','FontSize',12);
+    ylabel('Price','FontSize',12);
 
     figure(4);
     [X, Y] = meshgrid( 1:size(saved_probabilites,3), 1:params.team_size);
@@ -27,8 +27,8 @@ function [] = Displaying(params,saved_mean_prices,saved_probabilites,Team,best_s
         mesh(X,Y,squeeze(saved_probabilites(i,:,:)));
         view(0,90);
         title(['Probability to be with other athlete as function of iteration - person ' num2str(i)]);
-        xlabel('Person number');
-        ylabel('Iteration number');
+        ylabel('Person number');
+        xlabel('Iteration number');
     end
 
 
