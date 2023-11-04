@@ -2,7 +2,7 @@
 %%
 clear all;
 clc;
-
+tic
 %% Creating team
 Team = SimulateTeamCE();
 
@@ -56,6 +56,6 @@ while iteration < params.max_iteration
     iteration = iteration +1;
 end
 
+toc
 %% Figures
 Displaying(params,saved_mean_prices,saved_probabilites,Team,best_solution,best_valid_solution);
-
