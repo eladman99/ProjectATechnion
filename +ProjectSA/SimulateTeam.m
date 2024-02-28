@@ -17,27 +17,4 @@ function [Team] = SimulateTeam()
 
     Team.graph = Team.graph +2 ;
     Team.gender = ['M' 'M' 'M' 'M' 'F' 'F' 'F' 'F' 'F' 'F' 'F' 'F' 'M'];
-%     Team.graph = [0 10 0 0 0 0 0 0 0 0 0 0 0 zeros(1,4);
-%                   10 0 10 -inf 0 0 0 0 0 0 0 7 0 zeros(1,4);
-%                   0 10 0 10 0 0 0 0 0 0 9 0 0 zeros(1,4);
-%                   0 -inf 10 0 0 0 0 0 0 0 0 0 0 zeros(1,4);
-%                   0 0 0 0 0 10 0 0 0 0 0 0 0 zeros(1,4);
-%                   0 0 0 0 10 0 0 0 0 0 0 0 0 zeros(1,4);
-%                   0 0 0 0 0 0 0 10 10 0 0 0 0 zeros(1,4);
-%                   0 0 0 0 0 0 10 0 10 0 0 0 0 zeros(1,4);
-%                   0 0 0 0 0 0 10 10 0 0 0 0 0 zeros(1,4);
-%                   0 0 0 0 0 0 0 0 0 0 15 15 15 zeros(1,4);
-%                   0 0 9 0 0 0 0 0 0 15 0 15 15 zeros(1,4);
-%                   0 7 0 0 0 0 0 0 0 15 15 0 15 zeros(1,4);
-%                   0 0 0 0 0 0 0 0 0 15 15 15 0 zeros(1,4);
-%                   zeros(1,13) 0 10 0 0 ;
-%                   zeros(1,13) 10 0 10 -inf ;
-%                   zeros(1,13) 0 10 0 10 ;
-%                   zeros(1,13) 0 -inf 10 0 ;
-%                   zeros(1,13) 0 0 0 0 ;
-%                   zeros(1,13) 0 0 0 0 
-%                   
-%                         ];
-% 
-%     Team.graph = Team.graph +2 ;
-%     Team.gender = ['M' 'M' 'M' 'M' 'F' 'F' 'F' 'F' 'F' 'F' 'F' 'F' 'M' 'M' 'M' 'M' 'M'];
+
